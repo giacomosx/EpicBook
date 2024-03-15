@@ -1,1 +1,82 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --orange: #FDB870;
+    --orange--light: #FEDEBD;
+    --red: #F58C73;
+    --bg-input-field: #F1EEEA;
+}
+
+
+/* start helper class */
+
+.bg--red {
+    background-color: var(--red);
+}
+
+.bg--orange {
+    background-color: var(--orange);
+}
+
+.text--red {
+    color: var(--red);
+}
+
+.text--orange {
+    color: var(--orange);
+}
+
+.roboto--light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.roboto--regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto--bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* end helper class */
+
+.profile-pic-container {
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.searchbar__input {
+    background-color: var(--bg-input-field);
+    border-radius: 19px;
+}
+
+.searchbar__button {
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.searchbar__button:hover {
+    color: var(--red) !important;
+    border: 1px solid var(--red);
+    background-color: white !important;
+}
+
+.card {
+    background-color: var(--orange--light) !important;
+}
+
+.popular__tags.active {
+    background-color: var(--orange);
+    border: none !important;
+    font-weight: bold;
+    scale: 1.1;
+}
