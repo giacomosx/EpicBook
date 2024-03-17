@@ -56,7 +56,7 @@ const createMainCards = (book) => {
     cardText.classList.add('card-text', 'd-flex', 'justify-content-center');
 
     cardText.innerHTML = /* HTML */`
-        <a href="#" class="bg--red text-white px-2 rounded-pill  searchbar__button text-center text-decoration-none " role="button">
+        <a href="#" class="bg--red text-white px-2 rounded-pill  searchbar__button text-center text-decoration-none " role="button" onclick="addItemToCart('${title}', ${price})">
             <ion-icon name="cart-outline"></ion-icon><span class="small ps-2 p-0">${price} $</span>
         </a>
     `
@@ -103,6 +103,51 @@ const createMiniatureCard = (book, section) => {
 
     results.append(card)
 }
+
+let items = JSON.parse(localStorage.getItem('cart-items')) !== null ? JSON.parse(localStorage.getItem('cart-items')) : [];
+
+const addItemToCart = (title, price) => {
+    let book = {
+        title: title,
+        price: price
+    }
+    
+    items.push(book)
+    localStorage.setItem('cart-items', JSON.stringify(items));
+    location.reload()
+}
+
+
+const createCartItem = (item) => {
+    const itemsList = document.querySelector('.cart__items-list');
+    
+    const liElement = document.createElement('li');
+    liElement.classList.add('cart__item', 'list-group-item', 'ps-2', 'small', 'd-flex', 'flex-wrap', 'justify-content-between', 'align-items-center')
+    
+    liElement.innerHTML = /* HTML */ `
+    <a href="#" class="title text-secondary text-decoration-none text-truncate">${item.title}$</a>
+    <span class="rounded-pill p-2 bg--orange">${item.price}$</span>
+    `;
+    itemsList.append(liElement)
+}
+
+
+const cart = (items) => {
+    document.querySelector('.cart__fully').classList.remove('d-none');
+    document.querySelector('.cart__empty').classList.add('d-none');
+    items.forEach(item => createCartItem(item))
+
+    totalCart = items.reduce((partial, items) => items.price + partial, 0)
+
+    console.log(totalCart);
+
+    document.querySelector('.total-price__item').innerHTML = `${totalCart.toFixed(2)} $`
+}
+
+document.querySelector('#clearCart').addEventListener('click', () => {
+    localStorage.clear()
+    location.reload()
+})
 
 
 const swiper = new Swiper('.swiper', {
@@ -164,3 +209,8 @@ const swiper = new Swiper('.swiper', {
     spaceBetween: 5,
     grabCursor: true,
   });
+
+
+ items.length > 0 ?  cart(items) : '';
+
+
