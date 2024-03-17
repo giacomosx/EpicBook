@@ -74,6 +74,10 @@
     background-color: var(--orange--light) !important;
 }
 
+.main-card {
+    height: 320px;
+}
+
 .popular__tags.active {
     background-color: var(--orange);
     border: none !important;
@@ -100,5 +104,55 @@
 .card--white {
     margin-right: 30px;
     width: 240px;
+    max-width: 240px;
     background-color: white !important;
+}
+
+.card-title h5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.footer__nav-link--active {
+    opacity: 1 !important;
+}
+
+.footer__nav-link {
+    transition: all 500ms ease;
+}
+
+.footer__nav-link:hover {
+    opacity: 1 !important;
+}
+
+.credits {
+    height: 45px;
+}
+
+
+
+
+@media only screen and (max-width: 767px) {
+    .tags {
+        overflow-x: scroll !important;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    aside {
+        position: relative;
+    }
+
+    #footer {
+        border-radius: 0 !important;
+    }
+}
+
+
+@media only screen and (min-width: 1024px) {
+    #footer {
+        border-radius: 0 !important;
+    }
 }
