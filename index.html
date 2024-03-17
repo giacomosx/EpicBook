@@ -29,7 +29,7 @@
             </div>
         </nav>
     </header>
-    <section class="container-fluid py-4 position-sticky ">
+    <section class="container-fluid py-4 ">
         <div class="row">
             <div class="col-12 d-md-flex justify-content-center ">
                 <div class="searchbar d-flex gap-2 ">
@@ -63,16 +63,17 @@
                 </div>
             </div>
             <div class="row py-3 row-cols-2 row-cols-md-4 row-cols-xl-6 ">
+                <!-- popular card  -->
                 <div class="col ">
                     <div class="card pt-3 px-3  border-0 rounded-4">
-                        <div class="card__img--book">
+                        <div class="">
                             <img src="https://images-na.ssl-images-amazon.com/images/I/91J28bj3PYL.jpg" alt="" class="object-fit-cover w-100 h-100 card-img">
                         </div>
                         <div class="card-body px-0  text-center ">
                             <h3 class="card-title roboto--regular h6 text-truncate ">
                                 Born of Vengeance: The League: Nemesis Rising
                             </h3>
-                            <div class="card-text">
+                            <div class="card-text d-flex justify-content-center ">
                                 <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button text-center text-decoration-none " role="button">
                                     <ion-icon name="cart-outline"></ion-icon> <span class="small ps-2 p-0">5.65</span>
                                 </a>
@@ -82,14 +83,14 @@
                 </div>
                 <div class="col ">
                     <div class="card pt-3 px-3  border-0 rounded-4">
-                        <div class="card__img--book">
+                        <div class="">
                             <img src="https://images-na.ssl-images-amazon.com/images/I/91eGxsWGH7L.jpg" alt="" class="object-fit-cover w-100 h-100 card-img">
                         </div>
                         <div class="card-body px-0  text-center ">
                             <h3 class="card-title roboto--regular h6 text-truncate ">
                                 Silver Silence (Psy-Changeling Trinity)
                             </h3>
-                            <div class="card-text">
+                            <div class="card-text d-flex justify-content-center ">
                                 <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button text-center text-decoration-none " role="button">
                                     <ion-icon name="cart-outline"></ion-icon><span class="small ps-2 p-0">7.29</span>
                                 </a>
@@ -97,9 +98,10 @@
                         </div>
                     </div>
                 </div>
+                <!-- popular card end -->
             </div>
         </section>
-        <section class="collection px-2 py-1 ">
+        <section class="collection py-3 mb-5 ">
             <div class="row">
                 <div class="col-12 d-flex align-items-center justify-content-between">
                     <h4 class="h5">My collection</h4>
@@ -109,8 +111,44 @@
                     </div>
                 </div>
             </div>
+            <div class="row row-cols-1 row-cols-md-4 row-cols-xl-6 pt-4 ">
+                <!-- mt collection card -->
+                <div class="col py-3 ">
+                    <div class="card flex-row card--white border-0  p-0 ">
+                        <div class="row align-items-center ">
+                            <div class="col-4">
+                                <div class="miniature__container ">
+                                    <div class="miniature">
+                                        <img src="https://images-na.ssl-images-amazon.com/images/I/91J28bj3PYL.jpg" alt="" class="object-fit-cover w-100 h-100 card-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body p-0 ">
+                                    <div class="card-title">
+                                        <span class="small">Lorem ipsum dolor sit.</span>
+                                    </div>
+                                    <div class="card-text d-flex justify-content-start">
+                                        <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button text-center text-decoration-none " role="button">
+                                            <ion-icon name="cart-outline"></ion-icon><span class="small ps-2 p-0">7.29</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- my collection card end -->
+            </div>
         </section>
     </main>
+    <footer class="container-fluid position-fixed bottom-0 bg--red text-white">
+        <div class="row">
+            <div class="col-12">
+                footer
+            </div>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

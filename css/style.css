@@ -80,3 +80,25 @@
     font-weight: bold;
     scale: 1.1;
 }
+
+.miniature__container {
+    background-color: var(--orange--light);
+    border-radius: 20px;
+    height: 81px;
+    min-width: 81px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.miniature {
+    height: 81px;
+    width: 54px;
+    transform: translateY(-25%);
+}
+
+.card--white {
+    margin-right: 30px;
+    width: 240px;
+    background-color: white !important;
+}
