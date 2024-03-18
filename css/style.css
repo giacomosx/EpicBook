@@ -64,14 +64,20 @@
     align-items: center;
 }
 
-.searchbar__button:hover {
+.searchbar__button:hover, #checkoutBtn:hover {
     color: var(--red) !important;
     border: 1px solid var(--red);
     background-color: white !important;
 }
 
+#clearCart:hover {
+    color: var(--red) !important;
+    text-decoration: underline !important;
+}
+
 .card {
     background-color: var(--orange--light) !important;
+    position: relative;
 }
 
 .main-card {
@@ -136,6 +142,24 @@
     scroll-snap-type: proximity;
 }
 
+.badge-card.active {
+    position:absolute;
+    background-color: var(--red);
+    border: 3px solid white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    left: 0;
+    transform: translate(25%, 25%);
+}
+
+.badge-card--miniature.active {
+    transform: translateY(-120%);
+    width: 20px;
+    height: 20px;
+    z-index: 10;
+}
 
 @media only screen and (max-width: 767px) {
     .tags {
