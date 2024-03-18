@@ -84,7 +84,6 @@ const createMainCards = (book, section) => {
 
     buttonCard.addEventListener('click', () => {
         addItemToCart(title, price);
-        badgeCard.classList.add('active');
     })
     
     const spanPrice = document.createElement('span');
@@ -155,7 +154,6 @@ const createMiniatureCards = (book, section) => {
     
     buttonCard.addEventListener('click', () => {
         addItemToCart(title, price);
-        badgeCard.classList.add('active')  
     })
     
     const spanPrice = document.createElement('span');
@@ -189,15 +187,23 @@ const addItemToCart = (title, price) => {
     location.reload();
 }
 
+const removeItem = (book) => {
+    items = items.filter(item => item.title !== book);
+
+    localStorage.setItem('cart-items', JSON.stringify(items));
+    location.reload();
+}
+
 const createCartItem = (item) => {
     const itemsList = document.querySelector('.cart__items-list');
     
     const liElement = document.createElement('li');
-    liElement.classList.add('cart__item', 'list-group-item', 'ps-2', 'small', 'd-flex', 'flex-wrap', 'justify-content-between', 'align-items-center', 'flex-row')
+    liElement.classList.add('cart__item', 'list-group-item', 'ps-2', 'small', 'd-flex', 'justify-content-between', 'align-items-center', 'flex-row')
     
     liElement.innerHTML = /* HTML */ `
-    <a href="#" class="title text-secondary text-decoration-none text-truncate me-2">${item.title}</a>
-    <span class="rounded-pill p-2 bg--orange">${item.price}&nbsp;$</span>
+            <button type="button" class="btn-close" onclick="removeItem('${item.title}')"></button>        
+            <a href="#" class="title text-secondary text-decoration-none text-truncate me-2">${item.title}</a>
+            <span class="rounded-pill p-2 bg--orange">${item.price}&nbsp;$</span>
     `;
     itemsList.append(liElement)
 }
@@ -279,10 +285,16 @@ const swiper = new Swiper('.swiper', {
           slidesPerView: 2
         },
         768: {
-          slidesPerView: 4
+          slidesPerView: 3
         },
         1024: {
+          slidesPerView: 5
+        },
+        1440: {
           slidesPerView: 6
+        },
+        1720: {
+          slidesPerView: 8
         }
     },
     spaceBetween: 20,
