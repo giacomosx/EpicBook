@@ -198,12 +198,12 @@ const createCartItem = (item) => {
     const itemsList = document.querySelector('.cart__items-list');
     
     const liElement = document.createElement('li');
-    liElement.classList.add('cart__item', 'list-group-item', 'ps-2', 'small', 'd-flex', 'justify-content-between', 'align-items-center', 'flex-row')
+    liElement.classList.add('cart__item', 'list-group-item', 'ps-2', 'small', 'd-flex', 'align-items-center', 'flex-row')
     
     liElement.innerHTML = /* HTML */ `
-            <button type="button" class="btn-close" onclick="removeItem('${item.title}')"></button>        
-            <a href="#" class="title text-secondary text-decoration-none text-truncate me-2">${item.title}</a>
-            <span class="rounded-pill p-2 bg--orange">${item.price}&nbsp;$</span>
+            <button type="button" class="btn-close me-1" onclick="removeItem('${item.title}')"></button>        
+            <a href="#" class="title text-secondary text-decoration-none text-truncate me-2 w-100 ">${item.title}</a>
+            <span class="rounded-pill p-2 bg--orange price-item">${item.price}&nbsp;$</span>
     `;
     itemsList.append(liElement)
 }
