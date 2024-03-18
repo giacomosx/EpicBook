@@ -18,7 +18,7 @@
                 data-bs-target="#offcanvasMenuLeft">
                 <ion-icon name="cart"></ion-icon>
             </button>
-            <a class="navbar-brand roboto--regular">Epicbook</a>
+            <a href="index.html" class="navbar-brand roboto--regular d-flex align-items-center "><img src="./assets/logoipsum-280.svg" alt="">&nbsp;Epicbook</a>
             <a href="https://placebeard.it/640/480" class="profile-pic-container order-md-last ">
                 <img src="https://placebeard.it/640/480" alt="" class="object-fit-cover w-100 h-100 ">
             </a>
@@ -33,8 +33,8 @@
                 </ul>
             </div>
             <div class="searchbar gap-2 d-none d-md-flex align-self-center ">
-                <input type="text" class="searchbar__input form-control" placeholder="Novels...">
-                <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button" role="button">
+                <input type="text" class="searchbar__input searchbar__input--desktop form-control" placeholder="Novels...">
+                <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button searchbar__button--desktop" role="button">
                     <ion-icon name="search"></ion-icon>
                 </a>
             </div>
@@ -44,8 +44,8 @@
         <div class="row">
             <div class="col-12 d-md-flex justify-content-center ">
                 <div class="searchbar d-flex gap-2 ">
-                    <input type="text" class="searchbar__input form-control" placeholder="Novels...">
-                    <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button" role="button">
+                    <input type="text" class="searchbar__input searchbar__input--mobile form-control" placeholder="Novels...">
+                    <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button searchbar__button--mobile" role="button">
                         <ion-icon name="search"></ion-icon>
                     </a>
                 </div>
@@ -58,13 +58,15 @@
                 <div class="offcanvas-md offcanvas-start w-100 pt-3 flex-column d-flex" data-bs-scroll="true"
                     id="offcanvasMenuLeft">
                     <div class="offcanvas-header justify-content-between  ">
-                        <a class="h2 m-0  text-decoration-none text-black  roboto--regular">Epicbook</a>
+                        <a href="index.html" class="h2 m-0  text-decoration-none text-black roboto--regular d-flex align-items-center ">
+                            <img src="./assets/logoipsum-280.svg" alt="">&nbsp;Epicbook
+                        </a>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                             data-bs-target="#offcanvasMenuLeft" aria-label="Close">
                         </button>
                     </div>
                     <div class="offcanvas-body flex-column ">
-                        <h3 class="h5 fw-light ">Your cart items:</h3>
+                        <h3 class="h5 fw-light d-flex align-items-center "><ion-icon name="cart"></ion-icon>&nbsp;Your cart items:</h3>
                         <div class="cart__fully d-none ">
                             <ul class="cart__items-list list-group mt-2 ">
                                 
@@ -74,8 +76,8 @@
                                 <span class="total-price__item fw-bold "></span>
                             </div>
                             <div class="d-flex justify-content-between ">
-                                <button class="btn bg--red text-white mt-2 ">Checkout</button>
                                 <button class="btn bg-white text--red mt-2 " id="clearCart">Clear cart</button>
+                                <button class="btn bg--red text-white mt-2 ">Checkout</button>
                             </div>
                         </div>
                         <div class="cart__empty mt-2">
@@ -83,15 +85,15 @@
                                 <h4 class="alert-heading h5">Cart still empty!</h4>
                                 <p>Try to add some books in your cart then proceed to checkout!</p>
                                 <hr>
-                                <p>Take a look at our <a href="#" class="link-body-emphasis ">special offers!</a></p>
+                                <p>Take a look at our <a href="#swiperOffers" class="link-body-emphasis ">special offers!</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </aside>
             <div class="col-12 col-md-9">
-                <div class="d-flex h-100 align-items-center justify-content-center spinner">
-                    <div class="spinner-border text--orange" role="status">
+                <div class="d-flex min-vh-100 align-items-center justify-content-center spinner">
+                    <div class="spinner-border text--orange " role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
@@ -147,12 +149,10 @@
                         </div>
                         <div class="row pt-4 ">
                             <div class="col-12">
-                                <div class="swiper py-2" id="swiperCollection">
+                                <div class="py-2" id="swiperCollection">
                                     <div class="swiper-wrapper collection-results">
                                         <!-- collection card  -->
                                     </div>
-                                    <div class="swiperCollection-button-prev text--orange"></div>
-                                    <div class="swiperCollection-button-next text--orange"></div>
                                 </div>
                             </div>
                         </div>
@@ -165,12 +165,10 @@
                         </div>
                         <div class="row pt-4 ">
                             <div class="col-12">
-                                <div class="swiper py-2" id="swiperOffers">
+                                <div class="py-2" id="swiperOffers">
                                     <div class="swiper-wrapper offers-results">
                                         <!-- offers card  -->
                                     </div>
-                                    <div class="swiperOffers-button-prev text--orange"></div>
-                                    <div class="swiperOffers-button-next text--orange"></div>
                                 </div>
                             </div>
                         </div>

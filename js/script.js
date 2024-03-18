@@ -1,9 +1,24 @@
+let items = JSON.parse(localStorage.getItem('cart-items')) !== null ? JSON.parse(localStorage.getItem('cart-items')) : [];
+const allBooks = [];
+
 window.onload = () => {
+    document.querySelector('#clearCart').addEventListener('click', () => {
+        localStorage.clear()
+        location.reload()
+    })
+
+    items.length > 0 ?  cart(items) : '';
+
+    searchFormControls();
+
     getBooks()
     .then(res => {
-        res.forEach(book => createMainCards(book))
-        res.filter(book => book.price < 5).forEach(bookFiltered => createMiniatureCard(bookFiltered, '.offers-results'))
-        res.filter(book => book.price > 10).forEach(bookFiltered => createMiniatureCard(bookFiltered, '.collection-results'))
+        res.forEach(book => {
+            createMainCards(book);
+            allBooks.push(book);
+        })
+        res.filter(book => book.price > 10).forEach(bookFiltered => createMiniatureCards(bookFiltered, '.collection-results'))
+        res.filter(book => book.price < 5).forEach(bookFiltered => createMiniatureCards(bookFiltered, '.offers-results'))
     })
 }
 
@@ -67,7 +82,7 @@ const createMainCards = (book) => {
     popularResults.append(col);
 }
 
-const createMiniatureCard = (book, section) => {
+const createMiniatureCards = (book, section) => {
     let {img, title, price } = book;
 
     const results = document.querySelector(section);
@@ -91,8 +106,8 @@ const createMiniatureCard = (book, section) => {
                             <h5 class="small  ">${title}</h5>
                         </div>
                         <div class="card-text d-flex justify-content-start">
-                            <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button text-center text-decoration-none " role="button">
-                                <ion-icon name="cart-outline"></ion-icon><span class="small ps-2 p-0">${price}</span>
+                            <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button text-center text-decoration-none " role="button" onclick="addItemToCart('${title}', ${price})">
+                                <ion-icon name="cart-outline"></ion-icon><span class="small ps-2 p-0">${price}&nbsp;$</span>
                             </a>
                         </div>
                     </div>
@@ -104,19 +119,16 @@ const createMiniatureCard = (book, section) => {
     results.append(card)
 }
 
-let items = JSON.parse(localStorage.getItem('cart-items')) !== null ? JSON.parse(localStorage.getItem('cart-items')) : [];
-
 const addItemToCart = (title, price) => {
     let book = {
         title: title,
         price: price
     }
     
-    items.push(book)
+    items.push(book);
     localStorage.setItem('cart-items', JSON.stringify(items));
-    location.reload()
+    location.reload();
 }
-
 
 const createCartItem = (item) => {
     const itemsList = document.querySelector('.cart__items-list');
@@ -125,31 +137,62 @@ const createCartItem = (item) => {
     liElement.classList.add('cart__item', 'list-group-item', 'ps-2', 'small', 'd-flex', 'flex-wrap', 'justify-content-between', 'align-items-center')
     
     liElement.innerHTML = /* HTML */ `
-    <a href="#" class="title text-secondary text-decoration-none text-truncate">${item.title}$</a>
-    <span class="rounded-pill p-2 bg--orange">${item.price}$</span>
+    <a href="#" class="title text-secondary text-decoration-none text-truncate">${item.title}</a>
+    <span class="rounded-pill p-2 bg--orange">${item.price}&nbsp;$</span>
     `;
     itemsList.append(liElement)
 }
 
-
 const cart = (items) => {
     document.querySelector('.cart__fully').classList.remove('d-none');
     document.querySelector('.cart__empty').classList.add('d-none');
+    
     items.forEach(item => createCartItem(item))
 
     totalCart = items.reduce((partial, items) => items.price + partial, 0)
 
-    console.log(totalCart);
-
     document.querySelector('.total-price__item').innerHTML = `${totalCart.toFixed(2)} $`
 }
 
-document.querySelector('#clearCart').addEventListener('click', () => {
-    localStorage.clear()
-    location.reload()
-})
+const searchItems = (form) => {
+    let query = document.querySelector(form).value.toLowerCase();
+
+    if(query.length >= 3) {
+        let results = allBooks.filter(book => book.title.toLowerCase().includes(query) );
+        document.querySelector('.popular-results').innerHTML = '';
+        results.forEach(result => createMainCards(result))
+    }
+
+}
+
+const searchItemsRealTime = (form) => {
+    let query = document.querySelector(form).value.toLowerCase();
+    
+    if(query.length >= 3) {
+        let results = allBooks.filter(book => book.title.toLowerCase().includes(query) );
+        document.querySelector('.popular-results').innerHTML = '';
+        results.forEach(result => createMainCards(result))
+    }
+
+}
+
+const searchFormControls = () => {
+    document.querySelector('.searchbar__button--mobile').addEventListener('click', () => {
+        searchItems('.searchbar__input--mobile');
+    })
+    document.querySelector('.searchbar__button--desktop').addEventListener('click', () => {
+        searchItems('.searchbar__input--desktop');
+    })
+    document.querySelector('.searchbar__input--mobile').addEventListener('input', () => {
+        searchItemsRealTime('.searchbar__input--mobile')
+    })
+    document.querySelector('.searchbar__input--desktop').addEventListener('input', () => {
+        searchItemsRealTime('.searchbar__input--desktop')
+    })
+}
 
 
+//Carousels
 const swiper = new Swiper('.swiper', {
     navigation: {
       nextEl: '.swiper-button-next',
@@ -171,46 +214,13 @@ const swiper = new Swiper('.swiper', {
   });
 
   const swiperCollection = new Swiper('#swiperCollection', {
-    navigation: {
-      nextEl: '.swiperCollection-button-next',
-      prevEl: '.swiperCollection-button-prev',
-    },
-    breakpoints: {
-        320: {
-          slidesPerView: 1
-        },
-        768: {
-          slidesPerView: 2
-        },
-        1024: {
-          slidesPerView: 3
-        }
-    },
     spaceBetween: 5,
     grabCursor: true,
   });
 
   const swiperOffers = new Swiper('#swiperOffers', {
-    navigation: {
-      nextEl: '.swiperOffers-button-next',
-      prevEl: '.swiperOffers-button-prev',
-    },
-    breakpoints: {
-        320: {
-          slidesPerView: 1
-        },
-        768: {
-          slidesPerView: 2
-        },
-        1024: {
-          slidesPerView: 3
-        }
-    },
     spaceBetween: 5,
     grabCursor: true,
   });
-
-
- items.length > 0 ?  cart(items) : '';
 
 
