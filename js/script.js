@@ -84,6 +84,8 @@ const createMainCards = (book, section) => {
 
     buttonCard.addEventListener('click', () => {
         addItemToCart(title, price);
+        badgeCard.classList.add('active');
+        cart(items)
     })
     
     const spanPrice = document.createElement('span');
@@ -134,7 +136,6 @@ const createMiniatureCards = (book, section) => {
     miniature.classList.add('miniature');
     miniature.innerHTML = `<img src="${img}" alt="" class="object-fit-cover w-100 h-100 card-img">`;
 
-    
     const col8 = document.createElement('div');
     col8.classList.add('col-8');
     
@@ -154,6 +155,8 @@ const createMiniatureCards = (book, section) => {
     
     buttonCard.addEventListener('click', () => {
         addItemToCart(title, price);
+        badgeCard.classList.add('active');
+        cart(items);
     })
     
     const spanPrice = document.createElement('span');
@@ -184,7 +187,6 @@ const addItemToCart = (title, price) => {
     
     items.push(book);
     localStorage.setItem('cart-items', JSON.stringify(items));
-    location.reload();
 }
 
 const removeItem = (book) => {
@@ -210,6 +212,8 @@ const createCartItem = (item) => {
 
 const cart = (items) => {
     document.querySelector('.cart__fully').classList.remove('d-none');
+    document.querySelector('.cart__empty').classList.add('d-none');
+    document.querySelector('.cart__items-list').innerHTML = '';
     
     items.forEach(item => createCartItem(item))
 
@@ -221,6 +225,7 @@ const cart = (items) => {
 
 const emptyCart = () => {
     document.querySelector('.cart__empty').classList.remove('d-none');
+    document.querySelector('.cart__fully').classList.add('d-none');
 }
 
 const searchItems = (form) => {
