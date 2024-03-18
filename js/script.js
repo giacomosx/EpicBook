@@ -14,7 +14,7 @@ window.onload = () => {
     getBooks()
     .then(res => {
         res.forEach(book => {
-            createMainCards(book);
+            createMainCards(book, '.popular-results');
             allBooks.push(book);
         })
         res.filter(book => book.price > 10).forEach(bookFiltered => createMiniatureCards(bookFiltered, '.collection-results'))
@@ -45,13 +45,16 @@ const showResults = () => {
     document.querySelector('.results-section').classList.remove('d-none');
 }
 
-const createMainCards = (book) => {
+const createMainCards = (book, section) => {
     let {img, title, price } = book;
 
-    const popularResults = document.querySelector('.popular-results');
+    console.log(section);
+    const popularResults = document.querySelector(section);
+    console.log(popularResults);
 
     const col = document.createElement('div');
-    col.classList.add('col', 'swiper-slide');
+    section !== '.search-results' ? col.classList.add('col', 'swiper-slide') : col.classList.add('col') ;
+    console.log(col);
     
     const card = document.createElement('div');
     card.classList.add('card', 'pt-3', 'px-3', 'border-0', 'rounded-4', 'main-card');
@@ -159,8 +162,13 @@ const searchItems = (form) => {
 
     if(query.length >= 3) {
         let results = allBooks.filter(book => book.title.toLowerCase().includes(query) );
-        document.querySelector('.popular-results').innerHTML = '';
-        results.forEach(result => createMainCards(result))
+        document.querySelector('.search-results').innerHTML = '';
+        document.querySelector('.search-section').classList.remove('d-none')
+        results.forEach(result => createMainCards(result, '.search-results'))
+        console.log(results);
+    } else {
+        document.querySelector('.search-section').classList.add('d-none');
+        document.querySelector('.search-results').innerHTML = '';
     }
 
 }
@@ -170,8 +178,13 @@ const searchItemsRealTime = (form) => {
     
     if(query.length >= 3) {
         let results = allBooks.filter(book => book.title.toLowerCase().includes(query) );
-        document.querySelector('.popular-results').innerHTML = '';
-        results.forEach(result => createMainCards(result))
+        document.querySelector('.search-results').innerHTML = '';
+        document.querySelector('.search-section').classList.remove('d-none')
+        results.forEach(result => createMainCards(result, '.search-results'))
+        console.log(results);
+    } else {
+        document.querySelector('.search-section').classList.add('d-none');
+        document.querySelector('.search-results').innerHTML = '';
     }
 
 }
