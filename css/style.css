@@ -84,6 +84,10 @@
     height: 320px;
 }
 
+.main-card .card-img-top {
+    height: 192px !important;
+}
+
 .popular__tags.active {
     background-color: var(--orange);
     border: none !important;
@@ -108,7 +112,6 @@
 }
 
 .card--white {
-    margin-right: 30px;
     width: 240px;
     max-width: 240px;
     background-color: white !important;
@@ -139,7 +142,7 @@
 
 #swiperCollection, #swiperOffers {
     overflow-x: scroll;
-    scroll-snap-type: proximity;
+    scroll-snap-type: mandatory;
 }
 
 .badge-card.active {
@@ -161,6 +164,10 @@
     z-index: 10;
 }
 
+
+button[data-bs-toggle=dropdown]:active, button[data-bs-toggle=dropdown]:focus {
+    border: none !important;
+}
 
 @media only screen and (max-width: 767px) {
     .tags {

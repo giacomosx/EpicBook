@@ -12,7 +12,7 @@ window.onload = () => {
     getBooks()
     .then(res => {
         res.forEach(book => {
-            createMainCards(book, '.popular-results');
+            window.location.pathname === '/index.html' ? createMainCards(book, '.popular-results') : '';
             allBooks.push(book);
         })
         res.filter(book => book.price > 10).forEach(bookFiltered => createMiniatureCards(bookFiltered, '.collection-results'))
@@ -65,23 +65,26 @@ const createMainCards = (book, section) => {
         } 
     })
 
+    const imgCardContainer = document.createElement('div');
+    imgCardContainer.classList.add('card-img-top');
+
     const imgCard = document.createElement('img');
-    imgCard.classList.add('object-fit-cover', 'w-100', 'h-100', 'card-img');
+    imgCard.classList.add('object-fit-cover', 'w-100', 'h-100');
     imgCard.src = img;
 
     const cardBody = document.createElement('div');
     cardBody.classList.add('card-body', 'px-0', 'text-center');
-
+    
     const titleCard = document.createElement('h3');
     titleCard.classList.add('card-title', 'roboto--regular', 'h6', 'text-truncate')
     titleCard.innerHTML = title;
-
+    
     const cardText = document.createElement('div');
-    cardText.classList.add('card-text', 'd-flex', 'justify-content-center');
-
+    cardText.classList.add('card-text', 'd-flex', 'justify-content-between');
+    
     const buttonCard = document.createElement('button');
-    buttonCard.classList.add('btn','bg--red','text-white', 'px-2', 'rounded-pill', 'searchbar__button');
-
+    buttonCard.classList.add('btn','bg--red','text-white', 'px-1', 'rounded-pill', 'searchbar__button');
+    
     buttonCard.addEventListener('click', () => {
         addItemToCart(title, price);
         badgeCard.classList.add('active');
@@ -89,16 +92,43 @@ const createMainCards = (book, section) => {
     })
     
     const spanPrice = document.createElement('span');
-    spanPrice.classList.add('small', 'ps-2', 'p-0')
+    spanPrice.classList.add('small', 'ps-1', 'p-0')
     spanPrice.innerHTML = price + ' $';
     
     const cartIcon = document.createElement('span');
     cartIcon.innerHTML = `<ion-icon name="cart-outline"></ion-icon>`;
 
+    const btnGroup = document.createElement('div');
+    btnGroup.classList.add('btn-group');
+
+
+    const dropDownMenu = document.createElement('ul');
+    dropDownMenu.classList.add('dropdown-menu');
+    dropDownMenu.innerHTML = /* HTML */ `
+        <li><a class="dropdown-item" onclick="viewDetails(${book.asin})">View details</a></li>
+        <li><hr class="dropdown-divider"></li>`
+    
+    btnGroup.append(dropDownMenu)
+    
+    const dropDownEl = document.createElement('li')
+    dropDownEl.classList.add('dropdown-item');
+    dropDownEl.innerHTML= 'Skip';
+    dropDownEl.addEventListener('click', () => {col.remove()})
+    
+    dropDownMenu.append(dropDownEl);
+    
+    
+    const buttonDropdown = document.createElement('button');
+    buttonDropdown.classList.add('btn', 'p-1', 'fs-4', 'text--red');
+    buttonDropdown.dataset.bsToggle = 'dropdown';
+    buttonDropdown.innerHTML = '<ion-icon name="ellipsis-vertical"></ion-icon>'
+
+    btnGroup.append(buttonDropdown)
     buttonCard.append(cartIcon, spanPrice)
-    cardText.append(buttonCard);
+    cardText.append(buttonCard, btnGroup);
     cardBody.append(titleCard, cardText);
-    card.append(badgeCard, imgCard, cardBody);
+    imgCardContainer.append(imgCard)
+    card.append(badgeCard, imgCardContainer, cardBody);
     col.append(card);
     popularResults.append(col);
 }
@@ -178,6 +208,7 @@ const createMiniatureCards = (book, section) => {
     cardText.append(buttonCard);
     buttonCard.append(cartIcon, spanPrice)
 }
+
 
 const addItemToCart = (title, price) => {
     let book = {
@@ -279,6 +310,11 @@ const searchFormControls = () => {
 }
 
 
+const viewDetails = (id) => {
+    location.assign(`details.html?asin=${id}`);
+}
+
+
 //Carousels
 const swiper = new Swiper('.swiper', {
     navigation: {
@@ -287,23 +323,37 @@ const swiper = new Swiper('.swiper', {
     },
     breakpoints: {
         320: {
-          slidesPerView: 2
+          slidesPerView: 2,
+          spaceBetween: 10
+        },
+        375: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        425: {
+          slidesPerView: 2,
+          spaceBetween: 40
         },
         768: {
-          slidesPerView: 3
+          slidesPerView: 3,
+          spaceBetween: 10
         },
         1024: {
-          slidesPerView: 5
+          slidesPerView: 4,
+          spaceBetween: 30
         },
         1440: {
-          slidesPerView: 6
+          slidesPerView: 6,
+          spaceBetween: 20
         },
         1720: {
-          slidesPerView: 8
+          slidesPerView: 8,
+          spaceBetween: 30
         }
     },
-    spaceBetween: 20,
     grabCursor: true,
+    centeredSlides: true,
+    centeredSlidesBounds: true
   });
 
   const swiperCollection = new Swiper('#swiperCollection', {

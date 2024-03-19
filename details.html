@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epicbook</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header class="container-fluid py-md-2 ">
+        <nav class="navbar navbar-expand-md gap-md-5">
+            <button class="btn fs-3 d-md-none p-1 text--orange" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasMenuLeft">
+                <ion-icon name="cart"></ion-icon>
+            </button>
+            <a href="index.html" class="navbar-brand roboto--regular d-flex align-items-center "><img src="./assets/logoipsum-280.svg" alt="">&nbsp;Epicbook</a>
+            <a href="https://placebeard.it/640/480" class="profile-pic-container order-md-last ">
+                <img src="https://placebeard.it/640/480" alt="" class="object-fit-cover w-100 h-100 ">
+            </a>
+            <div class="navbar-collapse collapse ">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active disabled text-secondary ">Saved</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="searchbar gap-2 d-none d-md-flex align-self-center ">
+                <input type="text" class="searchbar__input searchbar__input--desktop form-control" placeholder="Novels...">
+                <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button searchbar__button--desktop" role="button">
+                    <ion-icon name="search"></ion-icon>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <section class="container-fluid py-4 d-md-none ">
+        <div class="row">
+            <div class="col-12 d-md-flex justify-content-center ">
+                <div class="searchbar d-flex gap-2 ">
+                    <input type="text" class="searchbar__input searchbar__input--mobile form-control" placeholder="Novels...">
+                    <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button searchbar__button--mobile" role="button">
+                        <ion-icon name="search"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <main class="container-fluid">
+        <div class="row">
+            <aside class="col-md-3 bg-white h-100">
+                <div class="offcanvas-md offcanvas-start w-100 pt-3 flex-column d-flex" data-bs-scroll="true"
+                    id="offcanvasMenuLeft">
+                    <div class="offcanvas-header justify-content-between  ">
+                        <a href="index.html" class="h2 m-0  text-decoration-none text-black roboto--regular d-flex align-items-center ">
+                            <img src="./assets/logoipsum-280.svg" alt="">&nbsp;Epicbook
+                        </a>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                            data-bs-target="#offcanvasMenuLeft" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="offcanvas-body flex-column ">
+                        <h3 class="h5 fw-light d-flex align-items-center "><ion-icon name="cart"></ion-icon>&nbsp;Your cart items:</h3>
+                        <div class="cart__fully d-none ">
+                            <ul class="cart__items-list list-group mt-2 ">
+                                
+                            </ul>
+                            <span class="text-secondary small mt-2 d-block p-2">Total items: <span id="totalItems"></span></span>
+                            <div class="total-cart__item border rounded-2 mt-2 p-2 text-secondary d-flex justify-content-between ">
+                                <span class="fw-bold">Total cart:</span>
+                                <span class="total-price__item fw-bold "></span>
+                            </div>
+                            <div class="d-flex justify-content-between ">
+                                <button class="btn bg-white text--red mt-2 " id="clearCart">Clear cart</button>
+                                <button class="btn bg--red text-white mt-2 " id="checkoutBtn">Checkout</button>
+                            </div>
+                        </div>
+                        <div class="cart__empty mt-2 d-none">
+                            <div class="alert alert-light" role="alert">
+                                <h4 class="alert-heading h5">Cart still empty!</h4>
+                                <p>Try to add some books in your cart then proceed to checkout!</p>
+                                <hr>
+                                <p>Take a look at our <a href="#swiperOffers" class="link-body-emphasis ">special offers!</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-md-9">
+                <div class="d-flex min-vh-100 align-items-center justify-content-center spinner">
+                    <div class="spinner-border text--orange " role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div class="results-section px-2 py-4 d-none">
+                    <section class="details-section ">
+                        <div class="row">
+                            <div class="col-12 d-flex align-items-center ">
+                                <h2 class="roboto--regular h4 book-name">Book Name</h2>
+                            </div>
+                        </div>
+                        <div class="details-results py-3 mb-5">
+                            <!-- details card -->
+                        </div>
+                    </section>
+                    <section class="collection py-3 ">
+                        <div class="row">
+                            <div class="col-12 d-flex align-items-center justify-content-between">
+                                <h4 class="h5 roboto--regular">My collection</h4>
+                            </div>
+                        </div>
+                        <div class="row pt-4 ">
+                            <div class="col-12">
+                                <div class="py-2" id="swiperCollection">
+                                    <div class="swiper-wrapper collection-results">
+                                        <!-- collection card  -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="offers py-3 mb-5  ">
+                        <div class="row ">
+                            <div class="col-12 d-flex align-items-center justify-content-between">
+                                <h4 class="h5 roboto--regular">Special offers</h4>
+                            </div>
+                        </div>
+                        <div class="row pt-4 ">
+                            <div class="col-12">
+                                <div class="py-2" id="swiperOffers">
+                                    <div class="swiper-wrapper offers-results">
+                                        <!-- offers card  -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="container-fluid position-fixed bottom-0 bg--red text-white rounded-5 z-3 " id="footer">
+        <nav class="navbar py-0 d-md-none ">
+            <ul class="nav justify-content-between w-100 ">
+                <li class="nav-item">
+                    <a href="index.html"
+                        class="nav-link text-white opacity-50  fs-3 footer__nav-link footer__nav-link--active">
+                        <ion-icon name="home"></ion-icon>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link ">
+                        <ion-icon name="bookmark"></ion-icon>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link ">
+                        <ion-icon name="person"></ion-icon>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link ">
+                        <ion-icon name="settings"></ion-icon>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="credits justify-content-center align-items-center w-100 d-none d-md-flex">
+            <p class="m-0 small">&copy;2024 - Epicbooks - @giacomosx</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/details.js"></script>
+</body>
+
+</html>
