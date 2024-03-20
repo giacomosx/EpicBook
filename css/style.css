@@ -146,6 +146,10 @@
     cursor: grab;
 }
 
+.dropdown-menu {
+    z-index: 1000 !important;
+}
+
 .badge-card.active {
     position:absolute;
     background-color: var(--red);
