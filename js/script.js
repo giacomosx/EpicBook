@@ -12,7 +12,7 @@ window.onload = () => {
     getBooks()
     .then(res => {
         res.forEach(book => {
-            window.location.pathname === '/index.html' ? createMainCards(book, '.popular-results') : '';
+            createMainCards(book, '.popular-results');
             allBooks.push(book);
         })
         res.filter(book => book.price > 10).forEach(bookFiltered => createMiniatureCards(bookFiltered, '.collection-results'))
@@ -80,7 +80,7 @@ const createMainCards = (book, section) => {
     titleCard.innerHTML = title;
     
     const cardText = document.createElement('div');
-    cardText.classList.add('card-text', 'd-flex', 'justify-content-between');
+    cardText.classList.add('card-text', 'd-flex', 'justify-content-between', 'pt-2');
     
     const buttonCard = document.createElement('button');
     buttonCard.classList.add('btn','bg--red','text-white', 'px-1', 'rounded-pill', 'searchbar__button');
@@ -103,7 +103,7 @@ const createMainCards = (book, section) => {
 
 
     const dropDownMenu = document.createElement('ul');
-    dropDownMenu.classList.add('dropdown-menu');
+    dropDownMenu.classList.add('dropdown-menu', 'z-3');
     dropDownMenu.innerHTML = /* HTML */ `
         <li><a class="dropdown-item" onclick="viewDetails(${book.asin})">View details</a></li>
         <li><hr class="dropdown-divider"></li>`
@@ -118,8 +118,8 @@ const createMainCards = (book, section) => {
     dropDownMenu.append(dropDownEl);
     
     
-    const buttonDropdown = document.createElement('button');
-    buttonDropdown.classList.add('btn', 'p-1', 'fs-4', 'text--red');
+    const buttonDropdown = document.createElement('a');
+    buttonDropdown.classList.add( 'p-1', 'fs-4', 'text--red');
     buttonDropdown.dataset.bsToggle = 'dropdown';
     buttonDropdown.innerHTML = '<ion-icon name="ellipsis-vertical"></ion-icon>'
 
@@ -269,23 +269,14 @@ const searchItems = (form) => {
         if (results.length > 0) {
             document.querySelector('.search-section').classList.remove('d-none')
             results.forEach(result => createMainCards(result, '.search-results'))
-        } 
-    
-    } else {
-        document.querySelector('.search-section').classList.add('d-none');
-        document.querySelector('.search-results').innerHTML = '';
-    }
-
-}
-
-const searchItemsRealTime = (form) => {
-    let query = document.querySelector(form).value.toLowerCase();
-    
-    if(query.length >= 3) {
-        let results = allBooks.filter(book => book.title.toLowerCase().includes(query) );
-        document.querySelector('.search-results').innerHTML = '';
-        document.querySelector('.search-section').classList.remove('d-none')
-        results.forEach(result => createMainCards(result, '.search-results'))
+        } else {
+            document.querySelector('.search-results').innerHTML =/*HTML*/ `
+                <div class="justify-content-center h-100 w-100 align-items-center text-secondary py-5">
+                    <h5>Ops...I'm Sorry!</h5>
+                    <p>No results found, try another title!</p>
+                </div>
+                `;
+        }
     
     } else {
         document.querySelector('.search-section').classList.add('d-none');
@@ -302,10 +293,10 @@ const searchFormControls = () => {
         searchItems('.searchbar__input--desktop');
     })
     document.querySelector('.searchbar__input--mobile').addEventListener('input', () => {
-        searchItemsRealTime('.searchbar__input--mobile')
+        searchItems('.searchbar__input--mobile')
     })
     document.querySelector('.searchbar__input--desktop').addEventListener('input', () => {
-        searchItemsRealTime('.searchbar__input--desktop')
+        searchItems('.searchbar__input--desktop')
     })
 }
 
@@ -356,12 +347,14 @@ const swiper = new Swiper('.swiper', {
     centeredSlidesBounds: true
   });
 
-  const swiperCollection = new Swiper('#swiperCollection', {
+  const swiperCollection = new Swiper('.swiper-collection', {
     spaceBetween: 5,
     grabCursor: true,
+    
+    
   });
 
-  const swiperOffers = new Swiper('#swiperOffers', {
+  const swiperOffers = new Swiper('.swiper-offers', {
     spaceBetween: 5,
     grabCursor: true,
   });

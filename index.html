@@ -24,11 +24,11 @@
             </a>
             <div class="navbar-collapse collapse ">
                 <ul class="navbar-nav ">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link active">Home</a>
+                    <li class="nav-item ">
+                        <a href="index.html" class="nav-link active"><ion-icon name="home"></ion-icon>&nbsp;<span>Home</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link active disabled text-secondary ">Saved</a>
+                        <a href="#" class="nav-link disabled "><ion-icon name="sparkles"></ion-icon>&nbsp;Wishlist</a>
                     </li>
                 </ul>
             </div>
@@ -93,23 +93,23 @@
                 </div>
             </aside>
             <div class="col-12 col-md-9">
-                <div class="d-flex min-vh-100 align-items-center justify-content-center spinner">
-                    <div class="spinner-border text--orange " role="status">
+                <div class="d-flex py-5 align-items-center justify-content-center spinner">
+                    <div class="spinner-border text--orange mt-5 " role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
                 <div class="results-section px-2 py-4 d-none">
-                    <section class="search-section d-none">
+                    <section class="search-section py-3 d-none">
                         <div class="row">
                             <div class="col-6 d-flex align-items-center ">
                                 <h2 class="roboto--regular h4">Search results</h2>
                             </div>
                         </div>
-                        <div class="row row-cols-2 row-cols-md-4 row-cols-xl-6 search-results">
+                        <div class="row row-cols-2 row-cols-md-4 row-cols-xl-6 search-results row-gap-3 ">
 
                         </div>
                     </section>
-                    <section class="popular px-2 py-3 ">
+                    <section class="popular py-3 ">
                         <div class="row">
                             <div class="col-6 d-flex align-items-center ">
                                 <h2 class="roboto--regular h4">Popular now</h2>
@@ -160,9 +160,13 @@
                         </div>
                         <div class="row pt-4 ">
                             <div class="col-12">
-                                <div class="py-2" id="swiperCollection">
-                                    <div class="swiper-wrapper collection-results">
-                                        <!-- collection card  -->
+                                <div class="py-2">
+                                    <div class="swiper swiper-collection">
+                                        <div class="swiper-wrapper collection-results">
+                                            <!-- collection card  -->
+                                        </div>
+                                        <div class="swiper-button-prev text--orange"></div>
+                                        <div class="swiper-button-next text--orange"></div>
                                     </div>
                                 </div>
                             </div>
@@ -176,9 +180,16 @@
                         </div>
                         <div class="row pt-4 ">
                             <div class="col-12">
-                                <div class="py-2" id="swiperOffers">
-                                    <div class="swiper-wrapper offers-results">
-                                        <!-- offers card  -->
+                                <div class="py-2">
+                                    <div class="swiper swiper-offers">
+                                        <div class="swiper-wrapper offers-results">
+                                            <!-- offers card  -->
+                                        </div>
+                                        <div class="swiper-wrapper collection-results">
+                                            <!-- collection card  -->
+                                        </div>
+                                        <div class="swiper-button-prev text--orange"></div>
+                                        <div class="swiper-button-next text--orange"></div>
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +226,7 @@
             </ul>
         </nav>
         <div class="credits justify-content-center align-items-center w-100 d-none d-md-flex">
-            <p class="m-0 small">&copy;2024 - Epicbooks - @giacomosx</p>
+            <p class="m-0 small">&copy;2024 - Epicbooks - <a href="https://github.com/giacomosx" target="_blank" class="text-white ">@giacomosx</a></p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

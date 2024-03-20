@@ -1,8 +1,6 @@
 const param = new URLSearchParams(window.location.search);
 const asin = param.get('asin');
 
-console.log(asin);
-
 const getBook = async () => {
     let url = 'https://striveschool-api.herokuapp.com/books/';
     try {
@@ -13,13 +11,24 @@ const getBook = async () => {
     } catch (error) {
         console.log(error);
 
-        document.querySelector('.book-name').innerHTML = 'Ops...Sorry!';
-        document.querySelector('.details-results').innerHTML = `<div class="justify-content-center h-100 w-100 align-items-center"><p>Nothing founds for Asin cod. ${asin}</p></div>`;
+        document.querySelector('.book-name').innerHTML = 'Somthing Wrong!';
+        document.querySelector('.details-results').innerHTML =/*HTML*/ `
+                <div class="justify-content-center h-100 w-100 align-items-center text-secondary py-5">
+                    <h5>Ops...I'm Sorry!</h5>
+                    <p>No details found for asin code: ${asin}</p>
+                </div>
+                `;
     }
 }
 
 
 getBook().then(res => showDetails(res))
+
+getBooks()
+    .then(res => {
+        res.filter(book => book.price > 10).forEach(bookFiltered => createMiniatureCards(bookFiltered, '.collection-results'))
+        res.filter(book => book.price < 5).forEach(bookFiltered => createMiniatureCards(bookFiltered, '.offers-results'))
+    })
 
 
 const showDetails = (book) => {
