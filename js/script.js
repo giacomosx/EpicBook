@@ -46,8 +46,8 @@ const showResults = () => {
 }
 
 const createMainCards = (book, section) => {
-    let {img, title, price} = book;
-
+    let {img, title, price, asin} = book;
+    
     const popularResults = document.querySelector(section);
 
     const col = document.createElement('div');
@@ -105,7 +105,7 @@ const createMainCards = (book, section) => {
     const dropDownMenu = document.createElement('ul');
     dropDownMenu.classList.add('dropdown-menu', 'z-3');
     dropDownMenu.innerHTML = /* HTML */ `
-        <li><a class="dropdown-item" onclick="viewDetails(${book.asin})">View details</a></li>
+        <li><a class="dropdown-item view-details__button">View details</a></li>
         <li><hr class="dropdown-divider"></li>`
     
     btnGroup.append(dropDownMenu)
@@ -131,6 +131,8 @@ const createMainCards = (book, section) => {
     card.append(badgeCard, imgCardContainer, cardBody);
     col.append(card);
     popularResults.append(col);
+
+    dropDownMenu.querySelector('.view-details__button').addEventListener('click', () => {viewDetails(asin)})
 }
 
 const createMiniatureCards = (book, section) => {
@@ -302,7 +304,7 @@ const searchFormControls = () => {
 
 
 const viewDetails = (id) => {
-    location.assign(`details.html?asin=${id}`);
+    window.location.assign(`details.html?asin=${id}`);
 }
 
 
