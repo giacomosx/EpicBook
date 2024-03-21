@@ -14,18 +14,21 @@
 <body>
     <header class="container-fluid py-md-2 ">
         <nav class="navbar navbar-expand-md gap-md-5">
-            <button class="btn fs-3 d-md-none p-1 text--orange" type="button" data-bs-toggle="offcanvas"
+            <button class="btn fs-3 d-md-none p-1 text--orange d-flex " type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasMenuLeft">
                 <ion-icon name="cart"></ion-icon>
+                <span class="text--orange fs-6 d-none n-items-container">(0)</span>
             </button>
-            <a href="index.html" class="navbar-brand roboto--regular d-flex align-items-center "><img src="./assets/logoipsum-280.svg" alt="">&nbsp;Epicbook</a>
+            <a href="index.html" class="navbar-brand roboto--regular d-flex align-items-center "><img
+                    src="./assets/logoipsum-280.svg" alt="">&nbsp;Epicbook</a>
             <a href="https://placebeard.it/640/480" class="profile-pic-container order-md-last ">
                 <img src="https://placebeard.it/640/480" alt="" class="object-fit-cover w-100 h-100 ">
             </a>
             <div class="navbar-collapse collapse ">
                 <ul class="navbar-nav ">
                     <li class="nav-item ">
-                        <a href="index.html" class="nav-link active"><ion-icon name="home"></ion-icon>&nbsp;<span>Home</span></a>
+                        <a href="index.html" class="nav-link active"><ion-icon
+                                name="home"></ion-icon>&nbsp;<span>Home</span></a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link disabled "><ion-icon name="sparkles"></ion-icon>&nbsp;Wishlist</a>
@@ -33,8 +36,10 @@
                 </ul>
             </div>
             <div class="searchbar gap-2 d-none d-md-flex align-self-center ">
-                <input type="text" class="searchbar__input searchbar__input--desktop form-control" placeholder="Novels...">
-                <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button searchbar__button--desktop" role="button">
+                <input type="text" class="searchbar__input searchbar__input--desktop form-control"
+                    placeholder="Novels...">
+                <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button searchbar__button--desktop"
+                    role="button">
                     <ion-icon name="search"></ion-icon>
                 </a>
             </div>
@@ -44,8 +49,11 @@
         <div class="row">
             <div class="col-12 d-md-flex justify-content-center ">
                 <div class="searchbar d-flex gap-2 ">
-                    <input type="text" class="searchbar__input searchbar__input--mobile form-control" placeholder="Novels...">
-                    <a href="#" class="bg--red text-white px-3 rounded-pill  searchbar__button searchbar__button--mobile" role="button">
+                    <input type="text" class="searchbar__input searchbar__input--mobile form-control"
+                        placeholder="Novels...">
+                    <a href="#"
+                        class="bg--red text-white px-3 rounded-pill  searchbar__button searchbar__button--mobile"
+                        role="button">
                         <ion-icon name="search"></ion-icon>
                     </a>
                 </div>
@@ -58,7 +66,8 @@
                 <div class="offcanvas-md offcanvas-start w-100 pt-3 flex-column d-flex" data-bs-scroll="true"
                     id="offcanvasMenuLeft">
                     <div class="offcanvas-header justify-content-between  ">
-                        <a href="index.html" class="h2 m-0  text-decoration-none text-black roboto--regular d-flex align-items-center ">
+                        <a href="index.html"
+                            class="h2 m-0  text-decoration-none text-black roboto--regular d-flex align-items-center ">
                             <img src="./assets/logoipsum-280.svg" alt="">&nbsp;Epicbook
                         </a>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
@@ -66,13 +75,16 @@
                         </button>
                     </div>
                     <div class="offcanvas-body flex-column ">
-                        <h3 class="h5 fw-light d-flex align-items-center "><ion-icon name="cart"></ion-icon>&nbsp;Your cart items:</h3>
+                        <h3 class="h5 fw-light d-flex align-items-center "><ion-icon name="cart"></ion-icon>&nbsp;Your
+                            cart items:</h3>
                         <div class="cart__fully d-none ">
                             <ul class="cart__items-list list-group mt-2 ">
-                                
+
                             </ul>
-                            <span class="text-secondary small mt-2 d-block p-2">Total items: <span id="totalItems"></span></span>
-                            <div class="total-cart__item border rounded-2 mt-2 p-2 text-secondary d-flex justify-content-between ">
+                            <span class="text-secondary small mt-2 d-block p-2">Total items: <span
+                                    id="totalItems"></span></span>
+                            <div
+                                class="total-cart__item border rounded-2 mt-2 p-2 text-secondary d-flex justify-content-between ">
                                 <span class="fw-bold">Total cart:</span>
                                 <span class="total-price__item fw-bold "></span>
                             </div>
@@ -86,7 +98,8 @@
                                 <h4 class="alert-heading h5">Cart still empty!</h4>
                                 <p>Try to add some books in your cart then proceed to checkout!</p>
                                 <hr>
-                                <p>Take a look at our <a href="#swiperOffers" class="link-body-emphasis ">special offers!</a></p>
+                                <p>Take a look at our <a href="#swiperOffers" class="link-body-emphasis ">special
+                                        offers!</a></p>
                             </div>
                         </div>
                     </div>
@@ -205,24 +218,25 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link ">
-                        <ion-icon name="bookmark"></ion-icon>
+                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link disabled">
+                        <ion-icon name="sparkles"></ion-icon>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link ">
+                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link disabled">
                         <ion-icon name="person"></ion-icon>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link ">
+                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link disabled">
                         <ion-icon name="settings"></ion-icon>
                     </a>
                 </li>
             </ul>
         </nav>
         <div class="credits justify-content-center align-items-center w-100 d-none d-md-flex">
-            <p class="m-0 small">&copy;2024 - Epicbooks - <a href="https://github.com/giacomosx" target="_blank" class="text-white ">@giacomosx</a></p>
+            <p class="m-0 small">&copy;2024 - Epicbooks - <a href="https://github.com/giacomosx" target="_blank"
+                    class="text-white ">@giacomosx</a></p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

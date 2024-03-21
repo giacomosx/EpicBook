@@ -254,11 +254,15 @@ const cart = (items) => {
 
     document.querySelector('#totalItems').innerHTML = `${items.length}`
     document.querySelector('.total-price__item').innerHTML = `${totalCart.toFixed(2)} $`
+    
+    document.querySelector('.n-items-container').classList.remove('d-none')
+    document.querySelector('.n-items-container').innerHTML = `(${items.length})`
 }
 
 const emptyCart = () => {
     document.querySelector('.cart__empty').classList.remove('d-none');
     document.querySelector('.cart__fully').classList.add('d-none');
+    document.querySelector('.n-items-container').classList.add('d-none');
 }
 
 const searchItems = (form) => {

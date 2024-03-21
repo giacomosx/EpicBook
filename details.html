@@ -14,9 +14,10 @@
 <body>
     <header class="container-fluid py-md-2 ">
         <nav class="navbar navbar-expand-md gap-md-5">
-            <button class="btn fs-3 d-md-none p-1 text--orange" type="button" data-bs-toggle="offcanvas"
+            <button class="btn fs-3 d-md-none p-1 text--orange d-flex " type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasMenuLeft">
                 <ion-icon name="cart"></ion-icon>
+                <span class="text--orange fs-6 d-none n-items-container">(0)</span>
             </button>
             <a href="index.html" class="navbar-brand roboto--regular d-flex align-items-center "><img src="./assets/logoipsum-280.svg" alt="">&nbsp;Epicbook</a>
             <a href="https://placebeard.it/640/480" class="profile-pic-container order-md-last ">
@@ -173,17 +174,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link ">
-                        <ion-icon name="bookmark"></ion-icon>
+                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link disabled">
+                        <ion-icon name="sparkles"></ion-icon>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link ">
+                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link disabled">
                         <ion-icon name="person"></ion-icon>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link ">
+                    <a href="#" class="nav-link text-white opacity-50  fs-3 footer__nav-link disabled">
                         <ion-icon name="settings"></ion-icon>
                     </a>
                 </li>
