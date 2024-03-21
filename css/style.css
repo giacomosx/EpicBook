@@ -147,7 +147,15 @@
 }
 
 .dropdown-menu {
-    z-index: 1000 !important;
+    min-width: unset;
+}
+
+.dropdown-item {
+    padding: 0.5rem;
+}
+
+.dropdown-divider {
+    margin: 0;
 }
 
 .badge-card.active {

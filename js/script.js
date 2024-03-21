@@ -99,19 +99,19 @@ const createMainCards = (book, section) => {
     cartIcon.innerHTML = `<ion-icon name="cart-outline"></ion-icon>`;
 
     const btnGroup = document.createElement('div');
-    btnGroup.classList.add('btn-group');
+    btnGroup.classList.add('btn-group', 'dropup', 'dropup-center');
 
 
     const dropDownMenu = document.createElement('ul');
-    dropDownMenu.classList.add('dropdown-menu', 'z-3');
+    dropDownMenu.classList.add('dropdown-menu', 'p-0');
     dropDownMenu.innerHTML = /* HTML */ `
-        <li><a class="dropdown-item view-details__button">View details</a></li>
+        <li><a class="dropdown-item view-details__button small">View details</a></li>
         <li><hr class="dropdown-divider"></li>`
     
     btnGroup.append(dropDownMenu)
     
     const dropDownEl = document.createElement('li')
-    dropDownEl.classList.add('dropdown-item');
+    dropDownEl.classList.add('dropdown-item', 'small');
     dropDownEl.innerHTML= 'Skip';
     dropDownEl.addEventListener('click', () => {col.remove()})
     
